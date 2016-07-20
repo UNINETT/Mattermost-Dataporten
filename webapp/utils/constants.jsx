@@ -220,6 +220,7 @@ export default {
     OFFTOPIC_CHANNEL: 'off-topic',
     OFFTOPIC_CHANNEL_UI_NAME: 'Off-Topic',
     GITLAB_SERVICE: 'gitlab',
+    DATAPORTEN_SERVICE: 'dataporten',
     GOOGLE_SERVICE: 'google',
     EMAIL_SERVICE: 'email',
     LDAP_SERVICE: 'ldap',

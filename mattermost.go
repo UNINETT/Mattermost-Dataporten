@@ -31,6 +31,7 @@ import (
 
 	// Plugins
 	_ "github.com/mattermost/platform/model/gitlab"
+	_ "github.com/mattermost/platform/model/dataporten"
 
 	// Enterprise Deps
 	_ "github.com/dgryski/dgoogauth"

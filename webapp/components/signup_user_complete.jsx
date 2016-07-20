@@ -570,6 +570,24 @@ export default class SignupUserComplete extends React.Component {
             );
         }
 
+        if (global.window.mm_config.EnableSignUpWithDataporten === 'true') {
+            signupMessage.push(
+                <a
+                    className='btn btn-custom-login dataporten'
+                    key='dataporten'
+                    href={Client.getOAuthRoute() + '/dataporten/signup' + window.location.search}
+                >
+                    <span className='icon'/>
+                    <span>
+                        <FormattedMessage
+                            id='signup_user_completed.dataporten'
+                            defaultMessage='with Dataporten'
+                        />
+                    </span>
+                </a>
+            );
+        }
+
         if (global.window.mm_config.EnableSignUpWithGoogle === 'true') {
             signupMessage.push(
                 <a

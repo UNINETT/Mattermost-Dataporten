@@ -430,6 +430,20 @@ class SecurityTab extends React.Component {
                         </div>
                     </div>
                 );
+            } else if (this.props.user.auth_service === Constants.DATAPORTEN_SERVICE) {
+                inputs.push(
+                    <div
+                        key='oauthEmailInfo'
+                        className='form-group'
+                    >
+                        <div className='setting-list__hint'>
+                            <FormattedMessage
+                                id='user.settings.security.passwordDataportenCantUpdate'
+                                defaultMessage='Login occurs through Dataporten. Password cannot be updated.'
+                            />
+                        </div>
+                    </div>
+                );
             } else if (this.props.user.auth_service === Constants.LDAP_SERVICE) {
                 inputs.push(
                     <div
@@ -505,6 +519,13 @@ class SecurityTab extends React.Component {
                 <FormattedMessage
                     id='user.settings.security.loginGitlab'
                     defaultMessage='Login done through Gitlab'
+                />
+            );
+        } else if (this.props.user.auth_service === Constants.DATAPORTEN_SERVICE) {
+            describe = (
+                <FormattedMessage
+                    id='user.settings.security.loginDataporten'
+                    defaultMessage='Login done through Dataporten'
                 />
             );
         } else if (this.props.user.auth_service === Constants.LDAP_SERVICE) {
@@ -584,6 +605,24 @@ class SecurityTab extends React.Component {
                 );
             }
 
+            let dataportenOption;
+            if (global.window.mm_config.EnableSignUpWithDataporten === 'true' && user.auth_service === '') {
+                dataportenOption = (
+                    <div>
+                        <Link
+                            className='btn btn-primary'
+                            to={'/claim/email_to_oauth?email=' + encodeURIComponent(user.email) + '&old_type=' + user.auth_service + '&new_type=' + Constants.DATAPORTEN_SERVICE}
+                        >
+                            <FormattedMessage
+                                id='user.settings.security.switchDataporten'
+                                defaultMessage='Switch to using Dataporten SSO'
+                            />
+                        </Link>
+                        <br/>
+                    </div>
+                );
+            }
+
             let googleOption;
             if (global.window.mm_config.EnableSignUpWithGoogle === 'true' && user.auth_service === '') {
                 googleOption = (
@@ -624,7 +663,7 @@ class SecurityTab extends React.Component {
             inputs.push(
                 <div key='userSignInOption'>
                     {emailOption}
-                    {gitlabOption}
+                    {dataportenOption}
                     <br/>
                     {ldapOption}
                     {googleOption}
@@ -674,6 +713,13 @@ class SecurityTab extends React.Component {
                     defaultMessage='GitLab SSO'
                 />
             );
+        } else if (this.props.user.auth_service === Constants.DATAPORTEN_SERVICE) {
+            describe = (
+                <FormattedMessage
+                    id='user.settings.security.dataporten'
+                    defaultMessage='Dataporten SSO'
+                />
+            );
         } else if (this.props.user.auth_service === Constants.LDAP_SERVICE) {
             describe = (
                 <FormattedMessage
@@ -699,6 +745,7 @@ class SecurityTab extends React.Component {
 
         let numMethods = 0;
         numMethods = global.window.mm_config.EnableSignUpWithGitLab === 'true' ? numMethods + 1 : numMethods;
+        numMethods = global.window.mm_config.EnableSignUpWithDataporten === 'true' ? numMethods + 1 : numMethods;
         numMethods = global.window.mm_config.EnableSignUpWithGoogle === 'true' ? numMethods + 1 : numMethods;
         numMethods = global.window.mm_config.EnableLdap === 'true' ? numMethods + 1 : numMethods;
 

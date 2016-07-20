@@ -318,6 +318,7 @@ export default class LoginController extends React.Component {
 
         const ldapEnabled = this.state.ldapEnabled;
         const gitlabSigninEnabled = global.window.mm_config.EnableSignUpWithGitLab === 'true';
+        const dataportenSigninEnabled = global.window.mm_config.EnableSignUpWithDataporten === 'true';
         const googleSigninEnabled = global.window.mm_config.EnableSignUpWithGoogle === 'true';
         const usernameSigninEnabled = this.state.usernameSigninEnabled;
         const emailSigninEnabled = this.state.emailSigninEnabled;
@@ -416,7 +417,7 @@ export default class LoginController extends React.Component {
             );
         }
 
-        if ((emailSigninEnabled || usernameSigninEnabled || ldapEnabled) && (gitlabSigninEnabled || googleSigninEnabled)) {
+        if ((emailSigninEnabled || usernameSigninEnabled || ldapEnabled) && (gitlabSigninEnabled || googleSigninEnabled || dataportenSigninEnabled)) {
             loginControls.push(
                 <div
                     key='divider'
@@ -451,6 +452,24 @@ export default class LoginController extends React.Component {
                         <FormattedMessage
                             id='login.gitlab'
                             defaultMessage='GitLab'
+                        />
+                    </span>
+                </a>
+            );
+        }
+
+        if (dataportenSigninEnabled) {
+            loginControls.push(
+                <a
+                    className='btn btn-custom-login dataporten'
+                    key='dataporten'
+                    href={Client.getOAuthRoute() + '/dataporten/login' + this.props.location.search}
+                >
+                    <span className='icon'/>
+                    <span>
+                        <FormattedMessage
+                            id='login.dataporten'
+                            defaultMessage='Dataporten'
                         />
                     </span>
                 </a>

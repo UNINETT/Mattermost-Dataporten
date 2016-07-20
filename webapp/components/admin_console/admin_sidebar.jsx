@@ -376,6 +376,15 @@ export default class AdminSidebar extends React.Component {
                                         />
                                     }
                                 />
+                                <AdminSidebarSection
+                                    name='dataporten'
+                                    title={
+                                        <FormattedMessage
+                                            id='admin.sidebar.dataporten'
+                                            defaultMessage='Dataporten'
+                                        />
+                                    }
+                                />
                                 {ldapSettings}
                             </AdminSidebarSection>
                             <AdminSidebarSection

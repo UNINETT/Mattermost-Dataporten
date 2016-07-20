@@ -21,6 +21,7 @@ const (
 
 	SERVICE_GITLAB = "gitlab"
 	SERVICE_GOOGLE = "google"
+	SERVICE_DATAPORTEN = "dataporten"
 
 	WEBSERVER_MODE_REGULAR  = "regular"
 	WEBSERVER_MODE_GZIP     = "gzip"
@@ -231,6 +232,7 @@ type Config struct {
 	PrivacySettings      PrivacySettings
 	SupportSettings      SupportSettings
 	GitLabSettings       SSOSettings
+	DataportenSettings   SSOSettings
 	GoogleSettings       SSOSettings
 	LdapSettings         LdapSettings
 	ComplianceSettings   ComplianceSettings
@@ -250,6 +252,8 @@ func (o *Config) GetSSOService(service string) *SSOSettings {
 	switch service {
 	case SERVICE_GITLAB:
 		return &o.GitLabSettings
+	case SERVICE_DATAPORTEN:
+		return &o.DataportenSettings
 	case SERVICE_GOOGLE:
 		return &o.GoogleSettings
 	}
@@ -738,6 +742,10 @@ func (o *Config) Sanitize() {
 
 	if len(o.GitLabSettings.Secret) > 0 {
 		o.GitLabSettings.Secret = FAKE_SETTING
+	}
+
+	if len(o.DataportenSettings.Secret) > 0 {
+		o.DataportenSettings.Secret = FAKE_SETTING
 	}
 
 	o.SqlSettings.DataSource = FAKE_SETTING

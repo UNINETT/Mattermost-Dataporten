@@ -13,6 +13,7 @@ import PrivacySettings from 'components/admin_console/privacy_settings.jsx';
 import LogSettings from 'components/admin_console/log_settings.jsx';
 import EmailAuthenticationSettings from 'components/admin_console/email_authentication_settings.jsx';
 import GitLabSettings from 'components/admin_console/gitlab_settings.jsx';
+import DataportenSettings from 'components/admin_console/dataporten_settings.jsx';
 import LdapSettings from 'components/admin_console/ldap_settings.jsx';
 import SignupSettings from 'components/admin_console/signup_settings.jsx';
 import LoginSettings from 'components/admin_console/login_settings.jsx';
@@ -80,6 +81,10 @@ export default (
             <Route
                 path='gitlab'
                 component={GitLabSettings}
+            />
+            <Route
+                path='dataporten'
+                component={DataportenSettings}
             />
             <Route
                 path='ldap'

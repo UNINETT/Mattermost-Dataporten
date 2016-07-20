@@ -53,6 +53,7 @@ readme.md
 ./make-compiled-client.sh
 test.:test
 https://<your-mattermost-url>/signup/gitlab
+https://<your-mattermost-url>/signup/dataporten
 `https://example.com`
 
 #### Only the links within these sentences should auto-link:

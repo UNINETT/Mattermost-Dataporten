@@ -228,6 +228,7 @@ func getClientConfig(c *model.Config) map[string]string {
 	props["FeedbackEmail"] = c.EmailSettings.FeedbackEmail
 
 	props["EnableSignUpWithGitLab"] = strconv.FormatBool(c.GitLabSettings.Enable)
+	props["EnableSignUpWithDataporten"] = strconv.FormatBool(c.DataportenSettings.Enable)
 	props["EnableSignUpWithGoogle"] = strconv.FormatBool(c.GoogleSettings.Enable)
 
 	props["ShowEmailAddress"] = strconv.FormatBool(c.PrivacySettings.ShowEmailAddress)
@@ -311,6 +312,10 @@ func Desanitize(cfg *model.Config) {
 
 	if cfg.GitLabSettings.Secret == model.FAKE_SETTING {
 		cfg.GitLabSettings.Secret = Cfg.GitLabSettings.Secret
+	}
+
+	if cfg.DataportenSettings.Secret == model.FAKE_SETTING {
+		cfg.DataportenSettings.Secret = Cfg.DataportenSettings.Secret
 	}
 
 	if cfg.SqlSettings.DataSource == model.FAKE_SETTING {

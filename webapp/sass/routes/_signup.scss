@@ -240,6 +240,23 @@
                 }
             }
 
+            &.dataporten {
+                background: #c30000;
+
+                &:hover {
+                    background: darken(#c30000, 10%);
+                }
+
+                span {
+                    vertical-align: middle;
+                }
+
+                span.icon {
+                    display:none;
+                }
+
+            }
+
             &.google {
                 background: #dd4b39;
 

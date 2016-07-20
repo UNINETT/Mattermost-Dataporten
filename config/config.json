@@ -4,7 +4,7 @@
         "MaximumLoginAttempts": 10,
         "SegmentDeveloperKey": "",
         "GoogleDeveloperKey": "",
-        "EnableOAuthServiceProvider": false,
+        "EnableOAuthServiceProvider": true,
         "EnableIncomingWebhooks": false,
         "EnableOutgoingWebhooks": false,
         "EnableCommands": false,
@@ -120,12 +120,21 @@
     },
     "GitLabSettings": {
         "Enable": false,
-        "Secret": "",
-        "Id": "",
+        "Secret": "2dfefed8-7445-46c3-a39a-c1f11acf39b9",
+        "Id": "75741f37-85fa-41a1-ae54-7f6f39b39f61",
         "Scope": "",
-        "AuthEndpoint": "",
-        "TokenEndpoint": "",
-        "UserApiEndpoint": ""
+        "AuthEndpoint": "https://auth.dataporten.no/oauth/authorization",
+        "TokenEndpoint": "https://auth.dataporten.no/oauth/token",
+        "UserApiEndpoint": "https://auth.dataporten.no/userinfo"
+    },
+    "DataportenSettings": {
+        "Enable": true,
+        "Secret": "2dfefed8-7445-46c3-a39a-c1f11acf39b9",
+        "Id": "75741f37-85fa-41a1-ae54-7f6f39b39f61",
+        "Scope": "",
+        "AuthEndpoint": "https://auth.dataporten.no/oauth/authorization",
+        "TokenEndpoint": "https://auth.dataporten.no/oauth/token",
+        "UserApiEndpoint": "https://auth.dataporten.no/userinfo"
     },
     "GoogleSettings": {
         "Enable": false,
